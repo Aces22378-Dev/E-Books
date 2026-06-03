@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aces E-Books</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --blood: #8b0000;
+            --blood-glow: rgba(139, 0, 0, 0.6);
+            --bg-dark: #0a0505;
+            --text-ghost: #e0e0e0;
+            --glass: rgba(15, 5, 5, 0.75);
+            --glass-border: rgba(139, 0, 0, 0.3);
+            --gold: #ffd700;
+        }
+
+        ::selection {
+            background: var(--blood);
+            color: var(--gold);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: radial-gradient(circle at center, #1c0606 0%, var(--bg-dark) 100%);
+            color: var(--text-ghost);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+        }
+
+        .hub-overlay {
+            width: 100%;
+            max-width: 1200px;
+            padding: 60px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        /* --- HEADER BRANDING --- */
+        .hub-header {
+            margin-bottom: 50px;
+        }
+
+        .hub-header h1 {
+            font-family: 'Georgia', serif;
+            font-size: 3rem;
+            color: var(--blood);
+            margin: 0 0 10px 0;
+            text-shadow: 0px 4px 15px rgba(0, 0, 0, 0.8);
+            letter-spacing: 1px;
+        }
+
+        .hub-header p {
+            font-size: 1rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* --- CARDS GRID PLATFORM --- */
+        .grid-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            width: 100%;
+            perspective: 1000px; /* Activates 3D space depth */
+        }
+
+        /* --- INTERACTIVE 3D CARD LAYOUT --- */
+        .book-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            width: 320px;
+            padding: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(12px);
+            text-decoration: none;
+            color: inherit;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                        box-shadow 0.4s cubic-bezier(0.25, 1, 0.5, 1), 
+                        border-color 0.4s ease;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        /* Hover & Subtle Physics Simulation States */
+        .book-card:hover {
+            transform: translateY(-10px) rotateX(4deg) rotateY(-2deg);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.8), 0 0 25px var(--blood-glow);
+        }
+
+        .cover-wrapper {
+            width: 100%;
+            aspect-ratio: 5 / 8;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.6);
+            margin-bottom: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.4s ease;
+        }
+
+        .book-card:hover .cover-wrapper {
+            transform: scale(1.02);
+        }
+
+        .cover-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* --- TYPOGRAPHY INSIDE CARDS --- */
+        .book-title {
+            font-family: 'Georgia', serif;
+            font-size: 1.5rem;
+            color: #ffffff;
+            margin: 0 0 6px 0;
+            transition: color 0.3s ease;
+        }
+
+        .book-card:hover .book-title {
+            color: var(--gold);
+        }
+
+        .book-subtitle {
+            font-size: 0.85rem;
+            color: #a0a0a0;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        .action-tag {
+            font-size: 0.8rem;
+            color: var(--text-ghost);
+            background: rgba(139, 0, 0, 0.2);
+            border: 1px solid var(--glass-border);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+        }
+
+        .book-card:hover .action-tag {
+            background: var(--blood);
+            color: #ffffff;
+            border-color: #ffffff;
+            box-shadow: 0 0 10px var(--blood);
+        }
+
+        /* --- RESPONSIVE OPTIMIZATION --- */
+        @media (max-width: 700px) {
+            .hub-header h1 { font-size: 2.2rem; }
+            .grid-container { gap: 25px; }
+            .book-card { width: 280px; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hub-overlay">
+        
+        <div class="hub-header">
+            <h1>Aces E-Books</h1>
+            <p>E-Book Collection Library</p>
+        </div>
+
+        <div class="grid-container">
+
+            <a href="https://aces22378-dev.github.io/Novum/" class="book-card" target="_blank">
+                <div class="cover-wrapper">
+                    <img src="https://i.ibb.co/JWMRgcwh/Syntax-Shadow.png" alt="Syntax &amp; Shadow Cover" class="cover-img">
+                </div>
+                <div class="book-title">Syntax &amp; Shadow</div>
+                <div class="book-subtitle">Web Development</div>
+                <div class="action-tag">Open Vault</div>
+            </a>
+
+            <a href="https://aces22378-dev.github.io/Scripting-Realities/" class="book-card" target="_blank">
+                <div class="cover-wrapper">
+                    <img src="https://i.ibb.co/2YLwvRJ0/Scripting-Realities.png" alt="Scripting Realities Cover" class="cover-img">
+                </div>
+                <div class="book-title">Scripting Realities</div>
+                <div class="book-subtitle">Mastering Game Logic</div>
+                <div class="action-tag">Open Vault</div>
+            </a>
+
+        </div>
+
+    </div>
+
+</body>
+</html>
